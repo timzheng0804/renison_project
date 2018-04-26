@@ -1,0 +1,61 @@
+<style>
+    .test-content{
+        font-size: 20px !important;
+    }
+</style>
+<div class="test-page" ng-controller="TestController">
+    <div class="timer-bar">
+        <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-8 text-center">
+                <h3>
+                    <i class="fa fa-clock-o"></i>
+                    <timer countdown="timeLeft" interval="1000" finish-callback="onTimerFinished()" autostart="false"> {{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+                    {{category.name}} &nbsp &nbsp
+                    
+                </h3>
+                <p>{{questionProgress.numDone}}/{{questionProgress.numTotal+''}} finished</p>
+            </div>
+            
+        </div>
+        <div class="row text-center">
+            <p>  {{getNumCategoriesLeft()==1?'1 category':getNumCategoriesLeft()+' categories'}}  left</p>
+            <!-- <label class="progress-label">Progress: </label>
+            <ul class="list-unstyled category-progress">
+                <li ng-repeat="cateName in category.allCategories" class="progress-item" ng-class="{'active':cateName==category.name}">
+                    {{cateName}}
+                </li>
+            </ul> -->
+        </div>
+    </div>
+    <div class="container">
+    <div class="row test-content" id="top">
+        <div class="col-sm-10 col-sm-offset-1">
+            <ept-test-component  ng-repeat="component in category.testComponents | orderBy:'ordering'" component="component" component-num="component.questionIndex" on-response-changed="saveResponse(component)">
+            </ept-test-component>
+    
+            <div ng-show="isLastPage()" class="text-center">
+                <h3><strong>END OF EXAM</strong></h3>
+                <h4>Please make sure you check all your answers and leave no blank for Multiple Choice and Short Answer questions.
+                There is no penalty for incorrect answers.</h4>
+                <!-- <button type="button" class="btn btn-success"  ng-click="submitAll()">Submit
+                    All & Finish</button> -->
+             </div>
+             <span>{{message}}</span>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="text-center">
+                <button class="btn btn-lg" ng-click="next()"><span
+                        class="fa fa-chevron-right"></span>
+                        {{getNextButtonText()}} &nbsp; &nbsp;
+                </button>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+</div>

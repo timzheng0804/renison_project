@@ -1,0 +1,9 @@
+<article class="ept-box clear-fix" ng-class="cssClass">
+	<div class="header clear-fix" ng-switch="titleEditable">
+		<h4 class="title" ng-switch-when="text" editable-text="data.title">{{tag}} {{data.title}}</h4>
+		<span ng-switch-when="html"> {{tag}} <editable-text-angular content="data.title"></editable-text-angular></span>
+		<h4 class="title" ng-switch-default>{{tag}} {{data.title}}</h4>
+		<ept-action-group actions="actions"></ept-action-group>
+	</div>
+	<ng-transclude></ng-transclude>
+</article>

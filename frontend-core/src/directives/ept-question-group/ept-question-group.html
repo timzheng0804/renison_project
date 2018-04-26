@@ -1,0 +1,7 @@
+<div class="ept-question-group" ng-repeat="question in questions" >
+	<ept-question question="question" question-num="$index+1" 
+	is-admin="true" on-question-deleted="onQuestionDelete(question)"
+	on-question-changed="onQuestionModifiedCallback(question)"
+	></ept-question>
+	<ept-toolbar context="$index" actions="toolbarActions"></ept-toolbar>
+</div>

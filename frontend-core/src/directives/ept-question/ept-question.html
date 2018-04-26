@@ -1,0 +1,70 @@
+<ept-box title="question.content" tag="questionNum+'. '" title-editable="isAdmin?'text':''" on-update-title="updateContent(title)" class="cssClass" actions="actions">
+	<div ng-switch="question.componentType">
+	<!-- Note this will match question.type to literal string 'MULTIPLE_CHOICE' -->
+		<div ng-switch-when="MULTIPLE_CHOICE" class="multiple-choice">
+			<ept-group>
+				<ept-item ng-repeat="answer in question.answers track by $index" class="answer">
+					<div ng-if="!isAdmin" ng-class="{'correct-answer':answer.isCorrect && highlightCorrect}">
+						<input type="radio" ng-value="answer.content" ng-model="question.response[0].text" ng-change="onResChangedCallback()">
+						{{answer.content}}
+					</div>
+					<div ng-if="isAdmin" class="admin">
+						<input type="radio" ng-checked="answer.isCorrect" ng-click="onCorrectAnswerChanged($index)">
+						<span editable-text="answer.content">{{answer.content || "empty"}}</span>
+						<i class="fa fa-trash delete-answer" title="delete" ng-click="deleteAnswer($index)"></i>
+					</div>
+				</ept-item>
+				<ept-item ng-if="isAdmin" class="'add-more'" >
+					<button ng-click="newAnswer()" class="btn btn-icon btn-sm"> <i class="fa fa-plus"></i> ADD</button>
+				</ept-item>
+			</ept-group>
+
+		</div>
+
+		<div ng-switch-when="TRUE_FALSE" class="true-false">
+			<ept-group>
+				<ept-item ng-repeat="answer in question.answers track by $index" class="answer">
+					<div ng-if="!isAdmin" ng-class="{'correct-answer':answer.isCorrect && highlightCorrect}">
+						<input type="radio" ng-value="answer.content" ng-model="question.response[0].text" ng-change="onResChangedCallback()">
+						{{answer.content}}
+					</div>
+					<div ng-if="isAdmin" class="admin">
+						<input type="radio" ng-checked="answer.isCorrect" ng-click="onCorrectAnswerChanged($index)">
+						{{answer.content}} 
+						<!-- do not allow deletion for true_false-->
+					</div>
+				</ept-item>
+			</ept-group>
+		</div>
+
+		<div ng-switch-when="SHORT_ANSWER" class="short-answer">
+			<ept-group>
+				<ept-item ng-if="!isAdmin" class="answer">
+					<input type="text" class="ept-blank-space" ng-model="question.response[0].text" ng-change="onResChangedCallback()">
+					<div ng-if="highlightCorrect" >
+						Correct answer(s):
+						<p ng-repeat="answer in question.answers" class="correct-answer">{{answer.content}}</p>
+					</div>
+				</ept-item>
+				<ept-item class="admin" ng-if="isAdmin" ng-repeat="answer in question.answers track by $index">
+					<input type="text" class="ept-blank-space" ng-model="answer.content">
+					<i class="fa fa-trash delete-answer" title="delete" ng-click="deleteAnswer($index)"></i>
+				</ept-item>
+				<ept-item ng-if="isAdmin" class="'add-more'" ng-click="newAnswer()">
+					<button class="btn btn-icon btn-sm"> <i class="fa fa-plus"></i> ADD</button>
+				</ept-item>
+			</ept-group>
+		</div>
+
+		<div ng-switch-when="FREE_TEXT" class="free-text">
+			<ept-group>
+				<ept-item class="answer">
+					<textarea class="ept-blank-space" ng-disabled="isAdmin" ng-model="question.response[0].text" ng-change="onResChangedCallback()" cols="50" rows="4"></textarea>
+				</ept-item>
+			</ept-group>
+		</div>
+		<div ng-switch-default>
+			unsupported question type
+		</div>
+	</div>
+</ept-box>

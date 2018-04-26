@@ -1,0 +1,13 @@
+<div ng-show="isLoading" ng-class="{'loading-bar-cover':displayType === 'cover','loading-bar-cover cover-page':displayType==='cover-page'}" ng-switch="type">
+    <div id="bowlG" ng-class="cssClass" ng-switch-when="bowl">
+        <div id="bowl_ringG">
+            <div class="ball_holderG">
+                <div class="ballG">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-class="cssClass" class="ept-loader-spinner" ng-switch-default>
+        Loading...
+    </div>
+</div>

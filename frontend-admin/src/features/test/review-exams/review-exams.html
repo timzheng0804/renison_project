@@ -1,0 +1,73 @@
+<div class="container page-wrapper">
+    <header class="page-header clear-fix">
+        <span class="back">
+        <!-- <i class="ept-back-button fa fa-arrow-left" ng-click="goBack()"></i></span> -->
+        <h2 class="page-title">
+            <i class="fa fa-eye"></i> &nbsp; Review Exams
+        </h2>
+    </header>
+    <div class="review-exams-page">
+        <section class="exam-sections">
+            <div class="section-header">
+                <h2 class="title" ng-click="scoredSessionShown=!scoredSessionShown">
+                    Scored Exams <span class="badge badge-lg">{{scoredSessions.length}}</span>
+                    <i class="fa pull-right pointer-on-hover" ng-class="{'fa-chevron-down':scoredSessionShown,'fa-chevron-left':!scoredSessionShown}"></i>
+                </h2>
+            </div>
+            <div class="section-content"  ng-show="scoredSessionShown">
+                <ept-group class="scored-session-list">
+                    <ept-item ng-click="viewExam(session)" ng-repeat="session in scoredSessions | orderBy:'name'">
+                        <div style="width:100%">
+                            <h3 class="pull-left">
+                            <i class="user-icon fa fa-user"></i>
+                             {{session.name}}
+                            </h3>
+                            <h3 class="pull-right"><label for="" class="badge badge-info">{{session.score}}/{{session.totalScore}}</label></h3>
+                        </div>
+                    </ept-item>
+                </ept-group>
+            </div>
+        </section>
+        <section class="exam-sections">
+            <div class="section-header">
+                <h2 class="title" ng-click="ongoingSessionShown=!ongoingSessionShown">
+                    Ongoing (unscored) Exams <span class="badge badge-lg">{{ongoingSessions.length}}</span>
+                    <i class="fa pull-right pointer-on-hover" ng-class="{'fa-chevron-down':ongoingSessionShown,'fa-chevron-left':!ongoingSessionShown}"></i>
+                </h2>
+            </div>
+            <div class="section-content" ng-show="ongoingSessionShown">
+                <ept-group class='ongoing-session-list'>
+                    <ept-item ng-repeat="session in ongoingSessions | orderBy:['name','testSessionId'] track by session.testSessionId" >
+                        <ept-namecard  name="session.name" important-remark="getFinishedMessage(session)" info-entries="session.infoEntries" action-context="session" memo="session.studentId" actions="ongoingSessionActions"></ept-namecard>
+                        <div class="overlay" ng-class="{'active':session.edittingEnabled}">
+                            <form class="form">
+                              <div class="form-group row">
+                                  <label class="col-xs-5 col-xs-offset-1 col-form-label">Category</label>
+                                  <div class="col-xs-5">
+                                      <select class="form-control" ng-model="session.newCategoryId" ng-options="c.id as c.name+'( max allowed '+c.timeAllowed+' min)' for c in categories">
+                                      </select>
+                                  </div>
+                                </div>
+                                <br>
+                              <div class="form-group row">
+                                <label class="col-xs-5 col-xs-offset-1 col-form-label">
+                                <i class="fa fa-clock-o"></i>
+                                Time Allowed
+                                </label>
+                                <div class="col-xs-5">
+                                    <input type="number" ng-model="session.newTimeRemaining" class="form-control" placeholder="e.g. 5 min">
+                                </div>
+                              </div>
+                              <div class="row">
+                                  <button class="btn btn-primary" ng-click="setSessionProgress(session)">Change</button>
+                                  <button class="btn" ng-click="cancelSetSessionProgress(session)">Cancel</button>
+                              </div>
+                            </form>
+                        </div>
+                    </ept-item>
+                </ept-group>
+                
+            </div>
+        </section> 
+    </div>
+</div>

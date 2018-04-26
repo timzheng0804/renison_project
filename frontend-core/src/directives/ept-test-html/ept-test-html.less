@@ -1,0 +1,19 @@
+.ept-test-html.ept-editable{
+	@bgColor:white;
+	@txtColor: darken(@bgColor, 30%);
+	background-color: @bgColor;
+	position: relative;
+	.actions{
+		font-size:18px;
+		position: absolute;
+		top:-5px;
+		right: 10px;
+		.action-item a{
+			color: @txtColor;
+			cursor: pointer;
+			&:hover{
+				color: darken(@txtColor, 10%);
+			}
+		}
+	}
+}

@@ -1,0 +1,134 @@
+@import '~lesshat/build/lesshat.less';
+
+.ept-question-group{
+	&:hover{
+		.ept-toolbar{
+			visibility: visible;
+		}
+	}
+	.ept-toolbar{
+		visibility: hidden;
+	}
+}
+
+@bgColor:white;
+@actionColor:darken(@bgColor, 30%);
+.ept-box.ept-question{
+	font-size:2.5rem;
+	background-color: @bgColor;
+	.header{
+		border:none;
+		line-height: initial;
+	}
+
+	.title{
+		font-size: 3.5rem;
+	}
+	.actions{
+		float:none;
+		.action-item{
+			a{
+				color: @actionColor;
+				font-size: 20px;
+			}
+		}
+	}
+	.ept-group{
+		padding-left: 10px; 
+		.ept-item{
+			background-color: inherit;
+			box-shadow: none;
+			padding: 0;
+		}
+	}
+}
+
+.ept-question{
+	.multiple-choice,.true-false,.short-answer{
+		.answer {
+			.correct-answer{
+				background-color: rgba(50, 138, 70, 0.6);
+			}
+			.admin{
+				.delete-answer{
+					margin-left: 10px;
+					display:none;
+					&:hover{
+						cursor:pointer;
+					}
+				}
+				&:hover{
+					.delete-answer{
+						display:inline-block;
+					}
+				}
+			}
+		}
+	}
+	.short-answer{
+		.answer .correct-answer{
+			display:inline-block;
+			margin:0 10px;
+			background-color: inherit;
+		}
+	}
+}
+.ept-question.ept-question-make{
+	form.editable-wrap{
+		width:100%;
+		span.editable-controls{
+			width:100%;
+			display:inline-block;
+			input.editable-input{
+				width:80%;
+			}
+		}
+	}
+	.actions{
+		display: none;
+		float: right;
+	}
+	&:hover{
+		background-color: darken(@bgColor, 5%);
+		.actions{
+			display: inline-block;
+			.action-item{
+				a{
+					cursor: pointer;
+					&:hover{
+						color:darken(@actionColor, 10%);
+					}
+				}
+			}
+		}
+	}
+	.ept-group{
+		.ept-item.add-more{
+			color:@actionColor;
+			padding-left: 30px;
+			&:hover{
+				color:darken(@actionColor, 10%);
+			}
+		}
+	}
+}
+
+.ept-box.ept-question.ept-short-answer{
+	input.ept-blank-space{
+		width:50px;
+	}
+}
+
+.ept-free-text{
+	textarea.ept-blank-space{
+		width:80%;
+		margin:0 auto;
+	}
+}
+
+i.not-saved{
+	color:#e6f3ff
+}
+i.saved{
+	color:#339cff
+}

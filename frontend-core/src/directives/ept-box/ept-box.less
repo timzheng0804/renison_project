@@ -1,0 +1,45 @@
+
+@import '~lesshat/build/lesshat.less';
+.ept-box{
+	@fontSize: 16px;
+	background: white;
+	padding:15px;
+	font-size: @fontSize;
+	.header{
+		border-bottom: 1px solid #ececec;
+		margin-bottom: 10px;
+		min-height: 40px;
+		line-height: 32px;
+		.title{
+			display:inline-block;
+			margin:0;
+			max-width: 80%;
+			font-size:@fontSize * 1.2;
+		}
+	}
+}
+
+.ept-group{
+	list-style: none;
+	padding: 5px;
+
+}
+.ept-item{
+	@padTop: 10px;
+	@padBot:10px;
+	@fontSize: 1.2em;
+	box-shadow: 1px 1px 5px 0 #333;
+	padding:10px 15px;
+	.ept-item-name{
+		font-size:@fontSize;
+		margin:0;
+		margin-top: 2px;	
+		display:inline-block;
+		padding: @padTop 0px @padBot 15px;
+	}
+	.actions{
+		padding:@padTop 0 @padBot 15px;
+		font-size: @fontSize * 1;
+	}
+}
+

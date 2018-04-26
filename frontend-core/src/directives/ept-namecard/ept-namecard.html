@@ -1,0 +1,35 @@
+<article class="ept-namecard" ng-class='cssClass'>
+    <div class="row">
+        <div class="namecard-marker col-sm-2">
+            <div class="avatar bg-forest-green">
+                {{name[0] | uppercase}}
+            </div>
+        </div>
+        <div class="profile col-sm-offset-1 col-sm-9">
+            <div class="header clear-fix">
+                <span class="title">
+                    {{name}}
+                </span>
+                <span class="memo">
+                    {{memo}}
+                </span>
+            </div>
+            <div class="detail">
+                <ul class="icon-list personal-info" ng-hide="importantRemark">
+                    <li class="item full" ng-repeat="infoEntry in infoEntries">
+                        <span>
+                            <i class="icon" ng-class="infoEntry.iconClass"></i>
+                            {{infoEntry.text}}
+                        </span>
+                    </li>
+                </ul>
+                <label class="label finished-label label-danger"  ng-show="importantRemark">
+                    {{importantRemark}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar clear-fix">
+        <ept-action-group context="actionContext" actions="actions"></ept-action-group>
+    </div>
+</article>

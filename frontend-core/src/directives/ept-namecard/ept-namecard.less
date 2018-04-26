@@ -1,0 +1,94 @@
+@import '../utils.less';
+
+.ept-namecard{
+    .boxShadow();
+    position:relative;
+    .namecard-marker{
+        padding:20px;
+        text-align: center;
+    }
+    .profile{
+        @titleSize: 3rem;
+
+        @titleColor: black;
+        @memoSize: 2rem;
+        @memoColor: lighten(@titleColor,70%);
+        .header{
+            @height:40px;
+            width: 100%;
+            display: block;
+            padding: 5px;
+            height:@height;
+            line-height: (@height*0.8);
+            .title{
+                float:left;
+                margin:0;
+                display:inline-block;
+                font-size: @titleSize;
+                color:@titleColor;
+            }
+            .memo{
+                float: right;
+                font-size: @memoSize;
+                color:@memoColor;
+                display:inline-block;
+            }
+        }
+        .detail{
+            padding:10px;
+            ul.personal-info{
+                font-size: @memoSize + 0.2;
+                i.fa{
+                    color: lighten(@titleColor, 50%);
+                    margin-right: 5px;
+                }
+            }
+            label.finished-label{
+                margin-top: 10px;
+                position: relative;
+                top: 20px;
+                font-size: 2rem;
+            }
+        }
+        
+    }
+    .toolbar{
+        position:absolute;
+        bottom: 3px;
+        right: 3px;
+        .actions{
+            font-size: 2.5rem;
+        }
+    }
+}
+
+.avatar{
+    @avatarSize:110px;
+    @defaultBg:#ddd;
+    @defaultTxt:#fff;
+    @defaultFontSize: 48px;
+    height: @avatarSize;
+    width: @avatarSize;
+    background-color: @defaultBg;
+    color:@defaultTxt;
+    border-radius: 50%;
+    font-size:@defaultFontSize;
+    text-align: center;
+    line-height: @avatarSize;
+    margin:0 auto;
+}
+
+.icon-list{
+    @fontSize: 1em;
+    margin:0;
+    padding:0;
+    list-style: none;
+    .item{
+        .icon{
+            font-size: (1.2*@fontSize);
+
+        }
+        font-size: @fontSize;
+    }
+}
+

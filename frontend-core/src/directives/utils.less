@@ -1,0 +1,40 @@
+.pointer-on-hover:hover{
+	cursor: pointer;
+}
+
+.clear-fix{
+	&:before,&:after{
+		content:" ";
+		display:table;
+		clear:both;
+	}
+}
+
+.full{
+	width:100%;
+	display:block;
+}
+
+.bg-forest-green{
+	@bgColor:#2a7955;
+	background-color: @bgColor !important;
+	color:lighten(@bgColor, 30%) !important;
+}
+
+.boxShadow(@hor:1px,@ver:1px,@radius:5px){
+	@shadowColor: #888;
+	box-shadow: @hor @ver @radius @shadowColor;
+}
+
+.section{
+	@defaultBg: white;
+	margin-bottom: 20px;
+	background-color: @defaultBg;
+	.section-title{
+		padding: 10px 15px;
+		background: darken(@defaultBg, 10%);
+	}
+	.section-content{
+		padding: 10px 0px 10px 35px;
+	}
+}

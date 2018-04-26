@@ -1,0 +1,62 @@
+Lessons learnt:
+  1. "./" is mandatory for path relative import
+  2. need better organized common module
+ ☐ Each directive is a module, so that importing a directive would also import all its dependencies
+
+
+ Webpack: 
+   importing without relative path:
+     use the resolve field in webpack json and add `root` field like this
+     ```
+      root: [
+        path.resolve(__dirname, './src/'),
+        path.resolve(__dirname, './src/directives'),
+        path.resolve(__dirname, './src/services'),
+        path.resolve(__dirname, './src/lib'),
+        path.resolve(__dirname, './src/features'),
+        path.resolve(__dirname, './src/constants'),
+        path.resolve(__dirname, 'node_modules/')
+      ],
+     ```
+     if we do `import "question-type";` webpack will look into each of the 'src/question-type.js', 'src/constnats/question-type.js' to load files;
+     
+   lessfile:
+     prepend "~" to indicate this file is loaded form `moduleDirectories` e.g. import "~bootstrap/..."
+   font-awesome:
+     ```
+     npm install --save font-awesome
+     npm install --save url-loader
+     npm install --save font-awesome-webpack
+     # follow this instruction https://github.com/gowravshekar/font-awesome-webpack
+
+     make the following changes in your webpack config file
+     config.entry = [
+      'font-awesome-webpack',
+      './src/app.js'
+    ]
+
+     {
+       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+       loader: "url-loader?limit=10000&mimetype=application/font-woff"
+     }, {
+       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+       loader: "file-loader"
+     },
+     ```
+
+
+
+
+
+Random:
+   ✔ In typescript, cannot import angular1 module @done (16-03-12 12:53)
+   SOlution: need d.ts file as mentioned in https://github.com/Microsoft/TypeScript/issues/3019
+
+
+
+TODO
+ ✔ Loading bar, add a displayType, when = cover, covers parent element (pos absolute and 100% width height), loading state depends on param given @done (16-08-28 02:33)
+
+ ✔ delete video @done (16-08-30 10:04)
+
+ 

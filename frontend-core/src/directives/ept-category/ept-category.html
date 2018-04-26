@@ -1,0 +1,19 @@
+<article class="ept-category clear-fix" ng-class="cssClass">
+	<div class="row">
+		<div class="col-xs-5">
+			<h2 editable-text="category.name" class="name" stop-event>{{category.name}}</h2>
+		</div>
+		<div class="col-xs-4">
+			<span class="time">
+				<i class="fa fa-clock-o"></i>
+				<span editable-number="category.timeAllowed" stop-event>{{category.timeAllowed}} min</span>
+			</span>
+		</div>
+		<div class="col-xs-3">
+			<ept-action-group actions="categoryActions" context="category"></ept-action-group>
+		</div>
+	</div>
+	<div class="category-body">
+		<ng-transclude></ng-transclude>
+	</div>
+</article>

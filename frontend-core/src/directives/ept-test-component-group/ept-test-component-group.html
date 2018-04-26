@@ -1,0 +1,13 @@
+<div class="ept-test-component-group">
+	<!-- For insertion in the beginning only -->
+	<ept-toolbar context="0" actions="toolbarActions"></ept-toolbar>
+	<div ng-repeat="component in components">
+		<ept-test-component component="component" component-num="$index+1" 
+		is-admin="true" on-component-deleted="onComponentDelete(component)"
+		on-component-changed="onComponentChangedCallback(component,oldComponent)"
+		></ept-test-component>
+		<!-- the context parameter will be supplied to functions in toolbarActions[i].onAction -->
+		<!-- In this case, context is only used for insert. $index + 1 is the position to be inserted in the array -->
+		<ept-toolbar context="$index+1" actions="toolbarActions"></ept-toolbar>
+	</div>
+</div>

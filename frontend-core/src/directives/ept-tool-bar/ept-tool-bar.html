@@ -1,0 +1,8 @@
+<ul class="ept-toolbar" ng-class="cssClass">
+	<li class="ept-toolbar-item" ng-repeat="action in actions">
+		<a ng-click="action.onAction(context)" ng-class="action.class">
+			<i ng-class="action.iconClass"></i>
+			{{action.text}}
+		</a>
+	</li>
+</ul>

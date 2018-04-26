@@ -1,0 +1,124 @@
+<div ng-controller="LoginController">
+    <div ng-show="loginStaging" class="login-staging">
+        <ept-loading-bar class="'color-white'" type="'bowl'" is-loading="true"></ept-loading-bar>
+        <br>
+        <br>
+        <br>
+        <h3 class="explanation title">One moment, your instructor is setting up the exam.</h3>
+        <p class="explanation detail">If you want to review your login form, you can<a ng-click='resetLogin()'>go back.</a></p>
+    </div>
+    <div ng-show = "!loginStaging" class="container">
+        <h1 align="center" class="title">Renison English Placement Test</h1>
+        <p align="center"> To start, please fill out the information</p>
+        <div class="row">
+            <div class="span12">
+                <form ng-submit="login()" class="form-horizontal ept-login" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Given Name</label>
+                        <div class="col-sm-3">
+                            <input type="text" ng-model="user.firstName" required class="form-control"
+                                   placeholder="e.g. Thomas">
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Family Name</label>
+        
+                        <div class="col-sm-3">
+                            <input type="text" ng-model="user.lastName" required class="form-control"
+                                   placeholder="e.g. Zhang">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">studentId</label>
+                        <div class="col-sm-3">
+                            <input type="number" ng-model="user.studentId" required class="form-control" placeholder="e.g. 123456" integer>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Date of Birth: </label>
+                        <div class="col-sm-3">
+                            <input type="date" ng-model="user.dateOfBirth" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Gender</label>
+        
+                        <div class="col-sm-3">
+                            <!-- drop down menu required -->
+                            <!--sex-->
+                            <select ng-model='user.gender' class="form-control" required>
+                                <option value="FEMALE"> Female</option>
+                                <option value="MALE"> Male</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Email</label>
+                        <div class="col-sm-3">
+                            <input type="email" ng-model="user.email" required class="form-control" placeholder="e.g. thomas.zhang@hotmail.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">University</label>
+        
+                        <div class="col-sm-3">
+                            <!-- drop down menu required -->
+                            <!-- university -->
+                            <select ng-model='user.university' class="form-control" required>   
+                                <option value="other"> other</option>
+                                <option value="Beijing Institute of Technology"> Beijing Institute of Technology</option>
+                                <option value="Beijing JiaoTong University"> Beijing JiaoTong University</option>
+                                <option value="China Agricultural University"> China Agricultural University</option>
+                                <option value="China University of Mining and Technology"> China University of Mining and Technology</option>
+                                <option value="China University of Petroleum (Beijing)"> China University of Petroleum (Beijing)</option>
+                                <option value="China University of Petroleum (East China)"> China University of Petroleum (East China)</option>
+                                <option value="Dalian University of Technology"> Dalian University of Technology</option>
+                                <option value="Harbin Institute of Technology"> Harbin Institute of Technology</option>
+                                <option value="Huazhong University of Science and Technology"> Huazhong University of Science and Technology</option>
+                                <option value="Northwest University"> Northwest University</option>
+                                <option value="Ocean University of China"> Ocean University of China</option>
+                                <option value="Shandong Normal University"> Shandong Normal University</option>
+                                <option value="Soochow University"> Soochow University</option>
+                                <option value="Tianjin University"> Tianjin University</option>
+                                <option value="Tsinghua University"> Tsinghua University</option>
+                                <option value="University of Science and Technology Beijing"> University of Science and Technology Beijing</option>
+                                <option value="Xiamen University"> Xiamen University</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Current Major</label>
+        
+                        <div class="col-sm-3">
+                            <input type="text" ng-model="user.currentMajor" required class="form-control"
+                                   placeholder="e.g. math">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Gaokao English score</label>
+                        <div class="col-sm-3">
+                            <input type="number" ng-model="user.gaoKaoEngScore" class="form-control"
+                                   placeholder="e.g. 132">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Gaokao English maximum score</label>
+        
+                        <div class="col-sm-3">
+                            <input type="number" ng-model="user.gaoKaoEngMaxScore" class="form-control"
+                                   placeholder="e.g. 150">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div style="text-align: center" class="col-sm-12">
+                            <button type="submit" ng-disabled="!loaded" class="btn btn-success" value="login">Submit</button>
+                            <!-- <button type="button"  class="btn btn-danger" ng-click="expressLogin()">DEBUG LOGIN</button> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

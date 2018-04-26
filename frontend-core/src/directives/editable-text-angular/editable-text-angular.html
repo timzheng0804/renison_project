@@ -1,0 +1,5 @@
+<div ng-dblclick="toggleShown()">
+	<div ta-bind ng-show="nonEditable || !isShown" ng-model="content"></div>
+	<text-angular ng-show="!nonEditable && isShown" ng-model="content"></text-angular>
+	<span ng-show="!isShown && content==''">No content here ... double click to add content</span>
+</div>

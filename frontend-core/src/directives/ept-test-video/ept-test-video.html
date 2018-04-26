@@ -1,0 +1,32 @@
+<div class="ept-test-video" ng-class="cssClass">
+<!-- If content is not empty, display a video -->
+<video ng-show="content" controls>
+       <source ng-src="{{asTrustedUrl(content)}}" type="video/mp4"/>
+</video>
+<!-- example taken from http://jsfiddle.net/danialfarid/maqbzv15/1118/ -->
+<form class="upload-form" ng-show="uploadable">
+    <fieldset>
+      <br>Video:
+      <input type="file" ngf-accept="'video/*'" ngf-select ng-model="videoFile" name="file" ngf-max-size="200MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 200M</i>
+      <br>
+      <button ng-click="changeFile(videoFile)">Submit</button>
+      <!-- <span class="progress" ng-show="videoFile.progress >= 0">
+        <div style="width:{{videoFile.progress}}%" 
+            ng-bind="videoFile.progress + '%'"></div>
+      </span> -->
+      <!-- <span ng-show="videoFile.result">Upload Successful</span> -->
+      <!-- <span class="err" ng-show="errorMsg">{{errorMsg}}</span> -->
+    </fieldset>
+    <br>
+  <ul class="actions">
+    <li class="action-item">
+        <a ng-click="onContentDeletedCallback()" alt="delete"><i class="fa fa-trash"></i></a>
+    </li>
+  </ul>
+  </form>
+    
+</div>

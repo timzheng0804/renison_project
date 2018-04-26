@@ -1,0 +1,25 @@
+@import "~lesshat/build/lesshat.less";
+.actions{
+	list-style:none;
+	float:right;
+	display: inline-block;
+	.action-item{
+		display:inline-block;
+		margin:0 5px;
+		@defaultColor:#898989;
+		a{
+			color:@defaultColor;
+			text-decoration: none;
+			.transition(all 0.2s linear);
+			&:hover{
+				color:darken(@defaultColor, 10%);
+				cursor: pointer;
+			}
+		}
+		
+	}
+}
+
+.actions.no-float{
+	float:none;
+}

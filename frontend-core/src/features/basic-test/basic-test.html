@@ -1,0 +1,193 @@
+<div style="padding-right:10px" ng-controller="BasicTestController">
+	<ept-box title="title" actions="actions">
+		<ept-group>
+			<ept-item ng-repeat="answer in answers">
+				{{answer.content}}
+			</ept-item>
+		</ept-group>
+	</ept-box>
+	
+	<h1>Hello Wolrd~</h1>
+	<ept-category category="category">
+		<ept-test-component-group components="testComponents" on-component-deleted="logFunc(component)" on-component-modified="logFunc(component)" on-component-created="logFunc(component)"></ept-test-component-group>
+	</ept-category>
+	<ept-box title="'Listening'" actions="categoryActions">
+		
+	</ept-box>
+	<!-- <ept-test-component-group components="testComponents" on-component-deleted="logFunc(component)" on-component-modified="logFunc(component)" on-component-created="logFunc(component)"></ept-test-component-group> -->
+
+<!-- 	<div ng-repeat="item in questions">
+		<ept-test-component  component="item" is-admin="false" on-response-changed="onResChanged(component)" component-num="$index + 1"></ept-test-component >
+	</div>
+
+	<div ng-repeat="item in questions">
+		<ept-test-component  component="item" is-admin="true" on-component-deleted="deleteQuestion(component)" on-component-modified="logFunc(component)" component-num="$index + 1"></ept-test-component >
+	</div>
+
+	<ept-test-component component="{type:'html',content:testHtml}"></ept-test-component>
+	<ept-test-component is-admin="true" on-component-modified="logFunc(component)" on-component-deleted="logFunc(component)" component="{type:'html',content:testHtml}"></ept-test-component> -->
+
+	<!-- <ept-question-group questions="questions" on-question-modified="onQnsChanged(question)"></ept-question-group> -->
+	<!-- tobe tested -->
+<!-- 	<div ng-repeat="item in questions">
+		<ept-question  question="item" is-admin="true" on-question-deleted="deleteQuestion(question)" on-response-changed="onResChanged(question)" question-num="$index + 1"></ept-question >
+		<ept-toolbar context="$index" actions="questionTypeActions"></ept-toolbar>
+	</div> -->
+	
+ <!-- <ept-test-html content="testHtml"></ept-test-html> -->
+	<!-- <ept-test-p content="'lorem'"></ept-test-p> -->
+	<section class="ept-box clear-fix">
+		<div class="header clear-fix">
+			<h3 class="title">Tests Available</h3>
+			<ul class="actions">
+				<li class="action-item">
+					<a href=""><i class="fa fa-trash"></i></a>
+					<a href=""><i class="fa fa-arrows"></i></a>
+				</li>
+			</ul>
+		</div>
+		<div class="body">
+			<div class="row">
+				<!-- <ng-include src="'template/ept-name-card.html'"></ng-include> -->
+				<article class="ept-box clear-fix ept-question ept-question-make ">
+					<div class="header clear-fix">
+						<h4 class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum voluptatibus, ad mollitia totam libero! Animi, vel, eveniet dicta sint blanditiis, illum voluptatem autem minima impedit ipsum ratione suscipit atque nulla.</h4>
+						<ul class="actions">
+							<li class="action-item">
+								<a href=""><i class="fa fa-trash"></i></a>
+								<a href=""><i class="fa fa-arrows"></i></a>
+							</li>
+						</ul>
+					</div>
+					<ul class="ept-group clear-fix">
+						<li class="ept-item clear-fix">
+							<input type="radio"> a really long answer with lots and lots of text text
+						</li>
+
+						<li class="ept-item clear-fix">
+							<input type="radio"> answer2 short
+						</li>
+						<li class="ept-item clear-fix">
+							<input type="radio"> a really long answer with lots and lots of text text but longerrr and longer
+						</li>
+						<li class="ept-item clear-fix">
+							<input type="radio"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laboriosam.
+						</li>
+
+						<li class="ept-item add-more clear-fix ">
+							<button class="btn btn-icon btn-sm"> <i class="fa fa-plus"></i> ADD</button>
+						</li>
+					</ul>
+				</article>
+				<article class="ept-box clear-fix ept-question ept-question-make ept-short-answer">
+					<div class="header clear-fix">
+						<h4 class="title">2. fill in the blank</h4>
+						<ul class="actions">
+							<li class="action-item">
+								<a href=""><i class="fa fa-trash"></i></a>
+								<a href=""><i class="fa fa-arrows"></i></a>
+							</li>
+						</ul>
+					</div>
+					<ul class="ept-group clear-fix">
+						<li class="ept-item clear-fix ">
+							<input class="ept-blank-space" type="text">
+						</li>
+
+						<li class="ept-item clear-fix">
+							answer2 short
+						</li>
+						<li class="ept-item clear-fix">
+							a really long answer with lots and lots of text text but longerrr and longer
+						</li>
+						<li class="ept-item clear-fix">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laboriosam.
+						</li>
+
+						<li class="ept-item add-more clear-fix ">
+							<button class="btn btn-icon btn-sm"> <i class="fa fa-plus"></i> ADD</button>
+						</li>
+					</ul>
+				</article>
+				<article class="ept-box clear-fix ept-question ept-question-make ept-question-makeept-short-answer">
+					<div class="header clear-fix">
+						<h4 class="title">2. write a summary of the paragraph above</h4>
+						<ul class="actions">
+							<li class="action-item">
+								<a href=""><i class="fa fa-trash"></i></a>
+								<a href=""><i class="fa fa-arrows"></i></a>
+							</li>
+						</ul>
+					</div>
+					
+				</article>
+				<article class="ept-test-component">
+					<h4>Attention student, this is a new section</h4>
+				</article>
+			</div>
+			
+			<!-- <ul class="ept-group clear-fix">
+				<li class="ept-item clear-fix" ng-class="{'active':test.is_active}">
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 class="ept-item-name">
+								Beijing Jiao Da Test
+							</h5>
+							<ul class="actions clear-fix">
+								<li class="action-item" ng-click="exportData(test)">
+									<a >
+										<i class="fa fa-bar-chart"></i>
+									</a>
+								</li>
+								<li class="action-item" ng-click="toggleTest(test)">
+									<a >
+										<i class="fa" 
+										ng-class="{'fa-play':!test.is_active,
+										'fa-pause':test.is_active}"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<textarea class="comment" name="comment" cols="30" rows="10">
+								Student finds test too difficult
+							</textarea>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-clear btn-lg">
+								Start
+							</button>
+						</div>
+					</div>
+					
+					
+				</li>
+			</ul> -->
+		</div>
+	</section>
+
+	<section class="ept-box clear-fix">
+		<div class="header">
+			<h3 class="title">Students in Test {{activeTestID}}</h3>
+			<ul class="actions">
+				<li class="action-item">
+					<!-- <a href="">import</a> -->
+				</li>
+			</ul>
+		</div>
+		<div class="body">
+			<ul class="ept-group clear-fix">
+				<li class="ept-item clear-fix">
+					<h5 class="ept-item-name">
+						Name: {{session.user.givenName}} {{session.user.surname}} 
+						<small>{{session.sessionID}}ept</small>
+					</h5>
+					<ul class="actions clear-fix">
+						
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="container page-wrapper">
+	<div class="ept-test-admin-page test-detail">
+		<header class="page-header clear-fix">
+			<span class="back">
+			<!-- not needed as discovered <i class="ept-back-button fa fa-arrow-left" ng-click="goBack()"></i></span> -->
+			<h3 class="page-title as-editable" editable-text="test.name ">
+				{{test.name}}
+			</h3>
+			<ept-action-group 
+			actions="testActions"></ept-action-group>
+		</header>
+		<div class="container">
+			<section class="section desc">
+				<h4 class="section-title">
+					Description
+				</h4>
+				<div class="section-content as-editable">
+					<editable-text-angular content="test.description"></editable-text-angular>
+				</div>
+			</section>
+			<section class="section categories">
+			<h4 class="section-title">
+				Categories
+				<button ng-click="shuffleCategories()" class="btn btn-sm btn-info pull-right">
+					Shuffle
+				</button>
+			</h4>
+			<div class="section-content">
+				<ept-category category="category" ng-repeat="category in categories" ng-class="'darken-on-hover'" on-changed='saveCategory(category,oldCategory)' on-deleted="onCategoryDeleted(category)" actions="categoryActions">
+				</ept-category>
+				<ept-toolbar actions="toolbarActions"></ept-toolbar>
+			</div>
+			</section>
+		</div>
+	</div>
+</div>
